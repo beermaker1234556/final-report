@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA LA Irish Beers - Project Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Energetic & Playful (#003f5c, #58508d, #bc5090, #ff6361, #ffa600)
+        Application Structure Plan: The infographic tells a story, starting with the core vision and key metrics (The Hook). It then explains the strategy via a two-phase roadmap (The How). Next, it dives into the financials, showing cost breakdowns and profit projections (The Numbers). It follows with details about the product itself (The What) and concludes with the plan to secure funding (The Investment). This top-down narrative structure is designed for maximum clarity and engagement, guiding the user from the high-level concept to the operational details.
+        Visualization & Content Choices:
+        - Key Metrics -> Inform -> Large Text Cards -> Immediately grabs attention with the most critical data points.
+        - Roadmap -> Organize -> HTML/CSS Flowchart -> Visually simplifies the two-phase business strategy for easy understanding. No complex charts needed.
+        - Cost Breakdown -> Compare -> Donut Chart (Chart.js) -> Effectively shows the proportion of costs (COGS, Excise, Margin) that make up the final price.
+        - Investment vs. Profit -> Compare/Change -> Bar/Line Combo Chart (Chart.js) -> Powerfully contrasts the initial investment against the 12-month profit potential across the three growth scenarios.
+        - Brewing Process -> Organize -> HTML/CSS Timeline -> Clearly illustrates the linear steps of beer production.
+        - Financing Options -> Inform -> Styled List/Cards -> Presents funding sources in a clean, readable format.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .brand-gradient-text {
+            background: linear-gradient(90deg, #bc5090, #ff6361);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 4px solid #ffa600;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #003f5c;
+        }
+        .kpi-label {
+            font-size: 1rem;
+            color: #58508d;
+            margin-top: 0.5rem;
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#003f5c]">LA LA Irish Beers</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#vision" class="hover:text-[#ff6361]">Vision</a>
+                <a href="#roadmap" class="hover:text-[#ff6361]">Roadmap</a>
+                <a href="#financials" class="hover:text-[#ff6361]">Financials</a>
+                <a href="#product" class="hover:text-[#ff6361]">The Product</a>
+                <a href="#funding" class="hover:text-[#ff6361]">Funding</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex justify-center items-center py-12">
+        <img src="https://i.ibb.co/BKtPL47C/Chat-GPT-Image-Aug-14-2025-11-52-07-PM.png" alt="LA LA Irish Beer Can" class="w-48 md:w-64 animate-float">
+    </div>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="vision" class="text-center mb-20">
+            <h1 class="text-5xl md:text-6xl font-bold brand-gradient-text mb-4">The Future of Irish Beer in India.</h1>
+            <p class="text-lg max-w-3xl mx-auto mb-10">An actionable plan to launch "LA LA", a premium Irish Stout, leveraging a lean contract-brewing model to capture the market, with a clear path to profitability and scalable growth.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="kpi-card">
+                    <div class="kpi-value">₹24.74</div>
+                    <div class="kpi-label">Profit Per Can</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">₹3.8L</div>
+                    <div class="kpi-label">Min. Startup Capital</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">₹67.4L</div>
+                    <div class="kpi-label">12-Month Profit (1k Cases/Mo)</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="mb-20">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Our Two-Phase Growth Roadmap</h2>
+                <div class="relative max-w-5xl mx-auto">
+                    <div class="absolute left-1/2 w-1 bg-[#ffa600] h-full -translate-x-1/2"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <div class="text-center md:text-right">
+                            <div class="bg-[#ff6361] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto md:mr-0 md:ml-auto mb-4">1</div>
+                            <h3 class="text-2xl font-bold text-[#58508d] mb-2">Phase 1: Contract Brewing</h3>
+                            <p>Launch the brand with minimal capital by partnering with **CMJ Breweries Pvt. Ltd.** in Shillong. This allows us to focus on marketing and sales while leveraging their existing infrastructure and expertise. The goal is market entry and brand validation within 12-24 months.</p>
+                        </div>
+                        <div class="hidden md:block"></div>
+                        <div class="hidden md:block"></div>
+                        <div class="text-center md:text-left">
+                             <div class="bg-[#003f5c] text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto md:ml-0 md:mr-auto mb-4">2</div>
+                            <h3 class="text-2xl font-bold text-[#58508d] mb-2">Phase 2: Own Microbrewery</h3>
+                            <p>Using profits from Phase 1, we will establish our own licensed microbrewery. This move provides full control over production, boosts profit margins, and solidifies our position as a key player in the craft beer market.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="financials" class="mb-20">
+             <div class="section-card">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Financial Projections & Cost Structure</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                    <div class="lg:col-span-2 text-center">
+                        <h3 class="text-xl font-bold text-[#58508d] mb-4">Cost Breakdown Per Can (MRP: ₹100)</h3>
+                        <div class="chart-container" style="height:300px; max-width: 300px;">
+                            <canvas id="costBreakdownChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-3">
+                        <h3 class="text-xl font-bold text-center text-[#58508d] mb-4">12-Month Profit Potential by Volume</h3>
+                        <div class="chart-container" style="height:350px;">
+                            <canvas id="profitProjectionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="product" class="mb-20">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">The Anatomy of Our Irish Stout</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-xl font-bold text-[#58508d] mb-4">The Recipe</h3>
+                        <p class="mb-6">Our authentic Irish Stout is crafted from a simple, high-quality recipe designed for a rich, smooth, and roasty flavor profile. The key is balance.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start"><span class="text-2xl mr-4">🌾</span><div><span class="font-bold">Irish Pale & Flaked Malt:</span> The foundation for fermentable sugars and a creamy, smooth body.</div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-4">🔥</span><div><span class="font-bold">Roasted Barley:</span> The soul of the stout, providing the signature dark color and notes of coffee and chocolate.</div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-4">🌿</span><div><span class="font-bold">Magnum & Golding Hops:</span> A dual-hop charge for clean bitterness and a subtle, earthy aroma.</div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-4">🔬</span><div><span class="font-bold">Irish Ale Yeast:</span> A specific yeast strain that ferments cleanly, allowing the rich malt character to dominate.</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#58508d] mb-4">The Brewing Process</h3>
+                        <div class="relative pl-8">
+                             <div class="absolute top-0 left-2 h-full w-0.5 bg-gray-200"></div>
+                             <div class="relative mb-6">
+                                <div class="absolute -left-11 top-1 w-6 h-6 rounded-full bg-[#ffa600]"></div>
+                                <h4 class="font-bold">1. Mashing</h4>
+                                <p class="text-sm">Grains are steeped in hot water to convert starches into fermentable sugars.</p>
+                             </div>
+                             <div class="relative mb-6">
+                                <div class="absolute -left-11 top-1 w-6 h-6 rounded-full bg-[#ff6361]"></div>
+                                <h4 class="font-bold">2. Boiling & Hopping</h4>
+                                <p class="text-sm">The sugary liquid ("wort") is boiled while hops are added for bitterness and aroma.</p>
+                             </div>
+                             <div class="relative mb-6">
+                                <div class="absolute -left-11 top-1 w-6 h-6 rounded-full bg-[#bc5090]"></div>
+                                <h4 class="font-bold">3. Fermentation</h4>
+                                <p class="text-sm">Yeast is added to the cooled wort to convert sugars into alcohol and CO2.</p>
+                             </div>
+                             <div class="relative">
+                                <div class="absolute -left-11 top-1 w-6 h-6 rounded-full bg-[#58508d]"></div>
+                                <h4 class="font-bold">4. Maturation & Packaging</h4>
+                                <p class="text-sm">The beer is conditioned to mellow flavors before being canned for distribution.</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="funding" class="mb-20">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Securing Our Startup Capital</h2>
+                <p class="text-center max-w-3xl mx-auto mb-10">To launch with 1,000 cases/month, we need **₹3.80 Lakhs** in working capital for the first week's production run. Here are our primary funding avenues.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 border border-gray-200 rounded-lg">
+                        <div class="text-4xl mb-3">💰</div>
+                        <h3 class="font-bold text-lg text-[#58508d]">Self-Funding & Family</h3>
+                        <p class="text-sm">The fastest route, providing full control and avoiding debt. This is a manageable amount for founder contribution or raising from close contacts.</p>
+                    </div>
+                    <div class="text-center p-6 border border-gray-200 rounded-lg">
+                        <div class="text-4xl mb-3">🏦</div>
+                        <h3 class="font-bold text-lg text-[#58508d]">Bank Loans</h3>
+                        <p class="text-sm">Approaching commercial banks with our solid business plan and financial projections to secure a small business loan.</p>
+                    </div>
+                    <div class="text-center p-6 border border-gray-200 rounded-lg">
+                        <div class="text-4xl mb-3">🇮🇳</div>
+                        <h3 class="font-bold text-lg text-[#58508d]">Government Schemes</h3>
+                        <p class="text-sm">Exploring programs like Mudra Yojana and CGTMSE that offer collateral-free credit and support for small enterprises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#003f5c] text-white text-center py-6">
+        <p>&copy; 2025 LA LA Irish Beers. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const chartTooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (label.length <= maxWidth) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+        
+        const costBreakdownData = {
+            labels: ['Production Cost (COGS)', 'Excise Duty', 'Distributor Margin', 'Our Profit'],
+            datasets: [{
+                data: [30.18, 33.08, 12.00, 24.74],
+                backgroundColor: ['#003f5c', '#58508d', '#ffa600', '#ff6361'],
+                borderColor: '#f1f5f9',
+                borderWidth: 4
+            }]
+        };
+        new Chart(document.getElementById('costBreakdownChart'), {
+            type: 'doughnut',
+            data: costBreakdownData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...chartTooltipCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        const profitProjectionData = {
+            labels: ['1k Cases/Mo', '5k Cases/Mo', '20k Cases/Mo'],
+            datasets: [
+                {
+                    label: 'Initial Investment',
+                    data: [379560, 1897800, 7591200],
+                    backgroundColor: '#ff6361',
+                    borderColor: '#ff6361',
+                    borderWidth: 1,
+                    type: 'bar',
+                    yAxisID: 'y',
+                },
+                {
+                    label: '12-Month Profit',
+                    data: [6745560, 33727800, 134911200],
+                    backgroundColor: '#003f5c',
+                    borderColor: '#003f5c',
+                    borderWidth: 2,
+                    type: 'bar',
+                    yAxisID: 'y',
+                }
+            ]
+        };
+        new Chart(document.getElementById('profitProjectionChart'), {
+            type: 'bar',
+            data: profitProjectionData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 10000000) return (value / 10000000).toFixed(1) + ' Cr';
+                                if (value >= 100000) return (value / 100000).toFixed(1) + ' L';
+                                return value;
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
 
